@@ -10,11 +10,18 @@ describe User do
     expect(@user.email).to match 'user@example.com'
   end
 
-  it "requires a name" do
-    user = User.new(name: "")
+  it "requires a first name" do
+    user = User.new(firstname: "")
     
     expect(user.valid?).to eq(false)
-    expect(user.errors[:name].any?).to eq(true)
+    expect(user.errors[:firstname].any?).to eq(true)
+  end
+
+  it "requires a last name" do
+    user = User.new(lastname: "")
+    
+    expect(user.valid?).to eq(false)
+    expect(user.errors[:lastname].any?).to eq(true)
   end
 
 end

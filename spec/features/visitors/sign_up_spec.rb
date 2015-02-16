@@ -2,6 +2,10 @@
 #   As a visitor
 #   I want to sign up
 #   So I can visit protected areas of the site
+describe "sign up form" do
+  it { should have_text("Password") }
+end
+
 feature 'Sign Up', :devise do
 
   # Scenario: Visitor can sign up with valid email address and password
@@ -60,7 +64,7 @@ feature 'Sign Up', :devise do
   end
 
   scenario 'visitor cannot sign up without a first name' do
-    sign_up_with('','Visitson' 'test@example.com', 'please123', 'please123')
+    sign_up_with('','Visitson', 'test@example.com', 'please123', 'please123')
     expect(page).to have_content "Name can't be blank"
   end
 
