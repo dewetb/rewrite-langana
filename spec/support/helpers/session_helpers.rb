@@ -1,8 +1,9 @@
 module Features
   module SessionHelpers
-    def sign_up_with(name, email, password, confirmation)
+    def sign_up_with(firstname, lastname, email, password, confirmation)
       visit new_user_registration_path
-      fill_in 'Name', with: name
+      fill_in 'Firstname', with: firstname
+      fill_in 'Lastname', with: lastname
       fill_in 'Email', with: email
       fill_in 'Password', with: password
       fill_in 'Password confirmation', :with => confirmation
