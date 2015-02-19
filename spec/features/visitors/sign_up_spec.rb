@@ -2,11 +2,6 @@
 #   As a visitor
 #   I want to sign up
 #   So I can visit protected areas of the site
-describe "sign up form with Password" do
-  it do
-    should have_text("Password")
-  end
-end
 
 feature 'Sign Up', :devise do
 
