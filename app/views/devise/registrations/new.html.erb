@@ -3,6 +3,12 @@
     <h3>Sign up</h3>
     <%= devise_error_messages! %>
     <div class="form-group">
+      <%= f.radio_button :role, 'worker', class: 'form-control'  %> 
+      <%= label :worker, 'I am wanting to work' %>
+      <%= f.radio_button :role, 'employer', class: 'form-control'  %>
+      <%= label :employer, 'I am wanting to hire' %>
+    </div>
+    <div class="form-group">
       <%= f.label :firstname, 'First name' %>
       <%= f.text_field :firstname, :autofocus => true, class: 'form-control' %>
     </div>
