@@ -1,6 +1,7 @@
 FactoryGirl.define do
   factory :user do
     confirmed_at Time.now
+    role 'worker'
     firstname "Usie"
     lastname "Userson"
     email "test@example.com"
