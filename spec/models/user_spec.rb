@@ -24,4 +24,11 @@ describe User do
     expect(user.errors[:lastname].any?).to eq(true)
   end
 
+  it "requires a role" do
+    user = User.new(firstname: "user", lastname: "userson", role: nil)
+
+    expect(user.valid?).to eq(false)
+    expect(user.errors[:role].any?).to eq(true)
+  end
+
 end
