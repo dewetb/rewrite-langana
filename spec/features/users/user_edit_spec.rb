@@ -26,6 +26,18 @@ feature 'User edit', :devise do
     expect(page).to have_content(/.*#{txts[0]}.*|.*#{txts[1]}.*/)
   end
 
+  scenario 'user changes role' do
+    user = FactoryGirl.create(:user, role: 'worker')
+    login_as(user, :scope => :user)
+    visit edit_user_registration_path(user)
+    choose 'user_role_employer'
+    fill_in 'Current password', :with => user.password
+    click_button 'Update'
+    txts = [I18n.t( 'devise.registrations.updated'), I18n.t( 'devise.registrations.update_needs_confirmation')]
+    expect(page).to have_content(/.*#{txts[0]}.*|.*#{txts[1]}.*/)
+    expect(user.role).to match 'employer'
+  end
+
   # Scenario: User cannot edit another user's profile
   #   Given I am signed in
   #   When I try to edit another user's profile
