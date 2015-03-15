@@ -29,7 +29,7 @@ feature 'User profile page', :devise do
     login_as(me, :scope => :user)
     Capybara.current_session.driver.header 'Referer', root_path
     visit user_path(other)
-    expect(page).to have_content "Other user's name"
+    expect(page).to have_content "User First name: Usie Last name: Userson"
   end
 
   scenario "users cannot see a worker's page when not logged in" do
