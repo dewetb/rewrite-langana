@@ -38,6 +38,17 @@ feature 'User edit', :devise do
     expect(user.role).to match 'employer'
   end
 
+  scenario 'user changes first name' do
+    user = FactoryGirl.create(:user)
+    login_as(user, :scope => :user)
+    visit edit_user_registration_path(user)
+    fill_in 'user_firstname', :with => 'Newfirstname'
+    fill_in 'Current password', :with => user.password
+    click_button 'Update'
+    visit user_path(user)
+    expect(page).to have_content('Newfirstname')
+  end
+
   # Scenario: User cannot edit another user's profile
   #   Given I am signed in
   #   When I try to edit another user's profile
