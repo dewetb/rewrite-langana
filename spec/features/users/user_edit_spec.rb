@@ -35,7 +35,8 @@ feature 'User edit', :devise do
     click_button 'Update'
     txts = [I18n.t( 'devise.registrations.updated'), I18n.t( 'devise.registrations.update_needs_confirmation')]
     expect(page).to have_content(/.*#{txts[0]}.*|.*#{txts[1]}.*/)
-    expect(user.role).to match 'employer'
+    visit user_path(user)
+    expect(page).to have_content('Employer')
   end
 
   scenario 'user changes first name' do
