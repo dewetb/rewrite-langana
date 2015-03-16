@@ -2,3 +2,4 @@
 <p>First name: <%= @user.firstname if @user.firstname %></p>
 <p>Last name: <%= @user.lastname if @user.lastname %></p>
 <p>Email: <%= @user.email if @user.email %></p>
+<p>Email: <%= @user.role.capitalize if @user.role %></p>
