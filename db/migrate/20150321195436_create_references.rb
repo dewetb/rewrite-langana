@@ -10,7 +10,7 @@ class CreateReferences < ActiveRecord::Migration
 
       t.timestamps null: false
     end
-    add_foreign_key :references, :employer_users
-    add_foreign_key :references, :worker_users
+    add_foreign_key :references, :users, column: :employer_user_id, on_delete: :cascade
+    add_foreign_key :references, :users, column: :worker_user_id, on_delete: :cascade
   end
 end
