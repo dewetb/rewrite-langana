@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :reference do
+  factory :work_reference do
     employer_user nil
 worker_user nil
 work "MyString"
