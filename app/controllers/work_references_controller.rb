@@ -1,0 +1,2 @@
+class WorkReferencesController < ApplicationController
+end

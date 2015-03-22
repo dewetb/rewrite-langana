@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150321195436) do
+ActiveRecord::Schema.define(version: 20150322190558) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,6 +55,22 @@ ActiveRecord::Schema.define(version: 20150321195436) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  create_table "work_references", force: :cascade do |t|
+    t.integer  "employer_user_id"
+    t.integer  "worker_user_id"
+    t.string   "work"
+    t.text     "comment"
+    t.integer  "rating"
+    t.boolean  "recommend"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  add_index "work_references", ["employer_user_id"], name: "index_work_references_on_employer_user_id", using: :btree
+  add_index "work_references", ["worker_user_id"], name: "index_work_references_on_worker_user_id", using: :btree
+
   add_foreign_key "references", "users", column: "employer_user_id", on_delete: :cascade
   add_foreign_key "references", "users", column: "worker_user_id", on_delete: :cascade
+  add_foreign_key "work_references", "users", column: "employer_user_id", on_delete: :cascade
+  add_foreign_key "work_references", "users", column: "worker_user_id", on_delete: :cascade
 end
