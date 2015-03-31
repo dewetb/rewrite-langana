@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
-  resources :work_references
 
   root to: 'users#index'
   devise_for :users
-  resources :users
+  resources :users do
+    resources :work_references
+  end
 end
