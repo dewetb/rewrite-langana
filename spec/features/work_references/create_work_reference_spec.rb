@@ -1,4 +1,4 @@
-describe "Creating a new reference" do
+describe "Creating a new work reference" do
   it "saves the reference and shows the reference on the user's detail page" do
     user1 = FactoryGirl.create(:user, role: 'employer')
     user2 = FactoryGirl.create(:user,
@@ -14,9 +14,9 @@ describe "Creating a new reference" do
 
     click_link 'Give Reference'
 
-    expect(current_path).to eq(new_user_reference_path(user2))
+    expect(current_path).to eq(new_user_work_reference_path(user2))
 
-    fill_in "What work did #{user2.name} do for you?", with: "#{user2.name} fixed my computer"
+    fill_in "What work did #{user2.firstname} do for you?", with: "#{user2.firstname} fixed my computer"
 
     fill_in "Comment", with: "They installed more ram, reinstalled my OS and restored all of my data. I could not be happier"
 
@@ -45,8 +45,8 @@ describe "Creating a new reference" do
     click_link 'Give Reference'
 
     expect {
-      click_button 'Post Reference'
-    }.not_to change(Reference, :count)
+      click_button 'Give Reference'
+    }.not_to change(WorkReference, :count)
 
     expect(page).to have_text('error')
   end
