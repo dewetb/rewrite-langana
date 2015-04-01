@@ -23,9 +23,9 @@
     <% @user.work_references.each do |reference| %>
       <li>
         <div>
+          <%= link_to reference.employer_user.firstname, reference.employer_user %>
+        <div>
         <%= reference.work.capitalize %>
-        for
-        <%= link_to reference.reference.name, reference.reference %>
         </div>
         <%= reference.comment %>
         <div>
