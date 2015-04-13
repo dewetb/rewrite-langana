@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_filter :authenticate_user!, :except => :index
   before_filter :admin_or_employer, :except => [:show, :index]
+  before_filter :own_account, :only => :destroy
 
   def index
     @users = User.all
@@ -41,6 +42,12 @@ class UsersController < ApplicationController
   def admin_or_employer
     unless current_user.admin? || current_user.employer?
       redirect_to :back, :alert => "Access denied."
+    end
+  end
+
+  def own_account
+    unless current_user == @user
+      redirect_to :back, :alert => "Not allowed."
     end
   end
 

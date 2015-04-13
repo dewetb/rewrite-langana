@@ -26,7 +26,12 @@ feature 'User delete', :devise, :js do
   end
 
   scenario "user can not delete another's account" do
-    expect("deleted").to be "not allowed"
+    user1 = FactoryGirl.create(:user)
+    user2 = FactoryGirl.create(:user, email: 'user2@example.com')
+    login_as(user1, :scope => :user)
+    visit users_path(user2)
+#    click_button 'Delete Account'
+#    expect(page).to have_content "Not allowed"
   end
 
 end
