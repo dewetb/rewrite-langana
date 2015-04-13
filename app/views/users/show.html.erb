@@ -12,9 +12,9 @@
                     method: :delete,
                     data: { confirm: 'Are you sure you want to permanently delete your account?' },
                     class: 'button' %>
-        <%= link_to 'Give Reference', new_user_work_reference_path(@user), class: 'button' %>
+        <%= button_to('Give Reference', new_user_work_reference_path(@user), :class => 'btn btn-large btn-primary', method: :get) %>
       <% else %>
-        <%= link_to 'Give Reference', new_user_work_reference_path(@user), class: 'button' %>
+        <%= button_to('Give Reference', new_user_work_reference_path(@user), :class => 'btn btn-large btn-primary', method: :get) %>
       <% end %>
     </nav>
 
@@ -35,6 +35,5 @@
       </li>
     <% end %>
   </ul>
-
 
   </footer>

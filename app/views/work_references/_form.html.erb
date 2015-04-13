@@ -1,4 +1,5 @@
 <%= form_for [@user, @work_reference], url: user_work_references_path, method: :post do |f| %>
+  <%= render "shared/errors", object: @work_reference %>
   <fieldset>
     <ol>
       <li class="required">
@@ -12,7 +13,7 @@
       </li>
     </ol>
     <p>
-      <%= f.button 'Post Reference' %>
+      <%= f.submit 'Save Reference', :class => 'button right' %>
       <%= link_to "Cancel", @user, class: 'button' %>
     </p>
   </fieldset>
