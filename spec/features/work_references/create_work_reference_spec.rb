@@ -12,7 +12,7 @@ describe "Creating a new work reference" do
 
     visit user_path(user2)
 
-    click_link 'Give Reference'
+    click_button 'Give Reference'
 
     expect(current_path).to eq(new_user_work_reference_path(user2))
 
@@ -20,7 +20,7 @@ describe "Creating a new work reference" do
 
     fill_in "Comment", with: "They installed more ram, reinstalled my OS and restored all of my data. I could not be happier"
 
-    click_button 'Post Reference'
+    click_button 'Save Reference'
 
     expect(current_path).to eq(user_path(user2))
 
@@ -42,10 +42,10 @@ describe "Creating a new work reference" do
 
     visit user_path(user2)
 
-    click_link 'Give Reference'
+    click_button 'Give Reference'
 
     expect {
-      click_button 'Give Reference'
+      click_button 'Save Reference'
     }.not_to change(WorkReference, :count)
 
     expect(page).to have_text('error')
