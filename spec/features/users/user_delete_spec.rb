@@ -25,6 +25,10 @@ feature 'User delete', :devise, :js do
     expect(page).to have_content I18n.t 'devise.registrations.destroyed'
   end
 
+  scenario "user can not delete another's account" do
+    expect("deleted").to be "not allowed"
+  end
+
 end
 
 
