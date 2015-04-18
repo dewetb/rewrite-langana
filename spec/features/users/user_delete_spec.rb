@@ -1,20 +1,13 @@
 include Warden::Test::Helpers
 Warden.test_mode!
 
-# Feature: User delete
-#   As a user
-#   I want to delete my user profile
-#   So I can close my account
-feature 'User delete', :devise, :js do
+#the following line used to have :devise, :js do', would like to learn why
+feature 'User delete', :devise do
 
   after(:each) do
     Warden.test_reset!
   end
 
-  # Scenario: User can delete own account
-  #   Given I am signed in
-  #   When I delete my account
-  #   Then I should see an account deleted message
   scenario 'user can delete own account' do
     skip 'skip a slow test'
     user = FactoryGirl.create(:user)
@@ -29,9 +22,10 @@ feature 'User delete', :devise, :js do
     user1 = FactoryGirl.create(:user)
     user2 = FactoryGirl.create(:user, email: 'user2@example.com')
     login_as(user1, :scope => :user)
+    Capybara.current_session.driver.header 'Referer', root_path
     visit users_path(user2)
-#    click_button 'Delete Account'
-#    expect(page).to have_content "Not allowed"
+    click_button 'Delete Account'
+    expect(page).to have_content "Not allowed"
   end
 
 end
