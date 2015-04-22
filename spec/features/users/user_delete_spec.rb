@@ -18,16 +18,6 @@ feature 'User delete', :devise do
     expect(page).to have_content I18n.t 'devise.registrations.destroyed'
   end
 
-  scenario "user can not delete another's account" do
-    user1 = FactoryGirl.create(:user)
-    user2 = FactoryGirl.create(:user, email: 'user2@example.com')
-    login_as(user1, :scope => :user)
-    Capybara.current_session.driver.header 'Referer', root_path
-    visit users_path(user2)
-    click_button 'Delete Account'
-    expect(page).to have_content "Not allowed"
-  end
-
 end
 
 
