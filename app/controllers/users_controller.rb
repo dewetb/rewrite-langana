@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   before_filter :own_account, :only => :destroy
 
   def index
-    @users = User.all
+    @users = User.workers
   end
 
   def show

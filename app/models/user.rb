@@ -15,4 +15,8 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable
+
+  scope :workers, -> { where(role: 'worker')}
+  scope :employers, -> { where(role: 'employer')}
+
 end
