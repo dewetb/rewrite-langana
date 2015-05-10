@@ -15,11 +15,20 @@ feature 'User index page', :devise do
   #   Given I am signed in
   #   When I visit the user index page
   #   Then I see my own email address
-  scenario 'user sees own email address' do
+  scenario 'user sees index of workers only' do
     user = FactoryGirl.create(:user)
+    employuser = FactoryGirl.create(:user,
+                          role: 'employer',
+                          email: 'employ@example.com',
+                          firstname: 'Emmie')
+    workuser = FactoryGirl.create(:user,
+                          role: 'worker',
+                          email: 'work@example.com',
+                          firstname: 'Workie')
     login_as(user, scope: :user)
     visit users_path
-    expect(page).to have_content user.email
+    expect(page).to have_content workuser.firstname
+    expect(page).not_to have_content employuser.firstname
   end
 
 end
