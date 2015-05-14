@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   has_many :work_references, foreign_key: :worker_user_id
   has_many :work_references_given, class_name: "WorkReference", foreign_key: :employer_user_id
+  mount_uploader :profile_picture, ProfilePictureUploader
 
 #  has_many :employer_references, foreign_key: :worker_user_id
 #  has_many :employer_references_given, class_name: "EmployerReferences", foreign_key: :employer_user_id

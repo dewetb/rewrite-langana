@@ -9,6 +9,10 @@
       <%= f.radio_button :role, 'employer', class: 'form-control'  %>
     </div>
     <div class="form-group">
+      <%= f.label :profile_picture %>
+      <%= f.file_field :profile_picture %>
+    </div>
+    <div class="form-group">
       <%= f.label :first_name %>
       <%= f.text_field :firstname, :autofocus => true, class: 'form-control' %>
     </div>
