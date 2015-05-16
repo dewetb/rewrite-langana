@@ -11,22 +11,6 @@
       <% end %>
     </nav>
 
-  <ul id="users">
-    <h3>References from people I've worked for</h3>
-    <% @user.work_references.each do |reference| %>
-      <li>
-        <div>
-          <%= link_to reference.employer_user.firstname, reference.employer_user %>
-        <div>
-        <%= reference.work.capitalize %>
-        </div>
-        <%= reference.comment %>
-        <div>
-        Reviewed on
-        <%= reference.created_at.strftime("%d %b. %Y") %>
-        </div>
-      </li>
-    <% end %>
-  </ul>
+    <%= render 'workreferences' %>
 
   </footer>
