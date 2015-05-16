@@ -1,6 +1,6 @@
-<h3>User</h3>
-<p>First name: <%= @user.firstname if @user.firstname %></p>
-<p>Last name: <%= @user.lastname if @user.lastname %></p>
+<%= image_tag @user.profile_picture.url, size: '200' %>
+<p><%= @user.firstname if @user.firstname %>
+<%= @user.lastname if @user.lastname %></p>
 <p>Email: <%= @user.email if @user.email %></p>
 <p>Role: <%= @user.role.capitalize if @user.role %></p>
 
