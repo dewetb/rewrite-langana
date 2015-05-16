@@ -1,0 +1,16 @@
+development:
+  adapter: postgresql
+  encoding: utf8
+  database: langana_development
+  password: my_db_password
+  host: localhost
+  username: langana
+  password: <%= ENV['LANGANA_POSTGRES_PASSWORD'] %>
+
+test:
+  adapter: postgresql
+  encoding: utf8
+  database: langana_test
+  username: langana
+  password: <%= ENV['LANGANA_POSTGRES_PASSWORD'] %>
+  host: localhost
