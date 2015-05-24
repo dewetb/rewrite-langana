@@ -11,6 +11,7 @@ gem 'carrierwave'
 gem 'carrierwave-aws'
 gem 'mini_magick'
 gem 'pry'
+gem 'sinch_sms'
 group :development, :test do
   gem 'byebug'
   gem 'web-console', '~> 2.0'
