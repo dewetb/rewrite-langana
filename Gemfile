@@ -10,6 +10,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'carrierwave'
 gem 'carrierwave-aws'
 gem 'mini_magick'
+gem 'pry'
 group :development, :test do
   gem 'byebug'
   gem 'web-console', '~> 2.0'

@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_filter :authenticate_user!, :except => :index
+  before_filter :authenticate_user!, :except => [:index, :activate]
   before_filter :admin_or_employer, :except => [:show, :index]
   before_filter :own_account, :only => :destroy
 
@@ -29,6 +29,9 @@ class UsersController < ApplicationController
     user = User.find(params[:id])
     user.destroy
     redirect_to users_path, :notice => "User deleted."
+  end
+
+  def activate
   end
 
   private

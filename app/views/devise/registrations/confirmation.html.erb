@@ -1,0 +1,11 @@
+<div class="authform">
+  <%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => { :role => 'form'}) do |f| %>
+    <h3>Sign in</h3>
+    <%= devise_error_messages! %>
+    <div class="form-group">
+      <%= f.label :activation_code %>
+      <%= f.text_field :activation_code, :autofocus => true, class: 'form-control' %>
+    </div>
+      <%= f.submit 'Sign in', :class => 'button right' %>
+  <% end %>
+</div>
