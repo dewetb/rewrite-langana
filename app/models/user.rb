@@ -8,9 +8,8 @@ class User < ActiveRecord::Base
 
   enum role: [:worker, :employer, :vip, :admin]
 
-  validates :firstname, presence: true
-  validates :lastname, presence: true
-  validates :role, presence: true
+  validates_presence_of :firstname, :lastname, :role
+  validates_uniqueness_of :phone
 
   # Include default devise modules. Others available are:
   # :lockable, :timeoutable and :omniauthable

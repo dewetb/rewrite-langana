@@ -8,9 +8,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+    binding.pry
+    super
+  end
 
   # GET /resource/edit
   # def edit
@@ -36,11 +37,20 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-  # protected
+  protected
+
+  def sign_up_params
+    permit_attributes = [:firstname, :lastname, :password, :profile_picture, :password_confirmation, :phone, :email, :role]
+    params.require(:user).permit(permit_attributes)
+  end  
 
   # You can put the params you want to permit in the empty array.
   # def configure_sign_up_params
-  #   devise_parameter_sanitizer.for(:sign_up) << :attribute
+  #   devise_parameter_sanitizer.for(:sign_up) << [:role,
+  #                                 :firstname,
+  #                                 :lastname,
+  #                                 :profile_picture,
+  #                                 :phone]
   # end
 
   # You can put the params you want to permit in the empty array.
