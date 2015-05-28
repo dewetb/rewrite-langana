@@ -9,7 +9,10 @@ class User < ActiveRecord::Base
   enum role: [:worker, :employer, :vip, :admin]
 
   validates_presence_of :firstname, :lastname, :role
+  validates_presence_of :email, unless: ->(user){user.phone.present?}
+  validates_presence_of :phone, unless: ->(user){user.email.present?}
   validates_uniqueness_of :phone
+
 
   # Include default devise modules. Others available are:
   # :lockable, :timeoutable and :omniauthable
