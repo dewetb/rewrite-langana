@@ -20,11 +20,13 @@ feature 'User index page', :devise do
     employuser = FactoryGirl.create(:user,
                           role: 'employer',
                           email: 'employ@example.com',
-                          firstname: 'Emmie')
+                          firstname: 'Emmie',
+			  phone: "8888888")
     workuser = FactoryGirl.create(:user,
                           role: 'worker',
                           email: 'work@example.com',
-                          firstname: 'Workie')
+                          firstname: 'Workie',
+			  phone: "3333333")
     login_as(user, scope: :user)
     visit users_path
     expect(page).to have_content workuser.firstname

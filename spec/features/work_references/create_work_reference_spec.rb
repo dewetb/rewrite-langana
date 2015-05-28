@@ -5,7 +5,8 @@ describe "Creating a new work reference" do
                         role: 'worker',
                         firstname: "Jeremy",
                         lastname: "Ramos",
-                        email: "other@example.com"
+                        email: "other@example.com",
+			phone: ""
                       )
 
     login_as(user1, :scope => :user)
@@ -34,7 +35,8 @@ describe "Creating a new work reference" do
                         role: 'worker',
                         firstname: "Jeremy",
                         lastname: "Ramos",
-                        email: "other@example.com"
+                        email: "other@example.com",
+			phone: ""
                       )
 
 

@@ -16,8 +16,8 @@ feature 'User profile page', :devise do
   end
 
   scenario "employer can see a worker's page if he is logged in" do
-    me = FactoryGirl.create(:user, role: 'employer')
-    other = FactoryGirl.create(:user, role: 'worker', email: 'other@example.com')
+    me = FactoryGirl.create(:user, role: 'employer', phone: "3333333")
+    other = FactoryGirl.create(:user, role: 'worker', email: 'other@example.com', phone: "2222222")
     login_as(me, :scope => :user)
     Capybara.current_session.driver.header 'Referer', root_path
     visit user_path(other)
@@ -25,13 +25,13 @@ feature 'User profile page', :devise do
   end
 
   scenario "users cannot see a worker's page when not logged in" do
-    user = FactoryGirl.create(:user, role: 'worker')
+    user = FactoryGirl.create(:user, role: 'worker', phone: "5555555")
     visit user_path(user)
     expect(page).to have_content "You need to sign in or sign up before continuing"
   end
 
   scenario "users cannot see a employer's page when not logged in" do
-    user = FactoryGirl.create(:user, role: 'employer')
+    user = FactoryGirl.create(:user, role: 'employer', phone: "8888888")
     visit user_path(user)
     expect(page).to have_content "You need to sign in or sign up before continuing"
   end
@@ -39,7 +39,7 @@ feature 'User profile page', :devise do
 
   scenario "employer cannot see an employer's page when logged in" do
     me = FactoryGirl.create(:user, role: 'employer')
-    other = FactoryGirl.create(:user, role: 'employer', email: 'other@example.com')
+    other = FactoryGirl.create(:user, role: 'employer', email: 'other@example.com', phone: "1111111")
     login_as(me, :scope => :user)
     Capybara.current_session.driver.header 'Referer', root_path
     visit user_path(other)
@@ -48,7 +48,7 @@ feature 'User profile page', :devise do
 
   scenario "worker cannot see an employer's page when logged in" do
     me = FactoryGirl.create(:user, role: 'worker')
-    other = FactoryGirl.create(:user, role: 'employer', email: 'other@example.com')
+    other = FactoryGirl.create(:user, role: 'employer', email: 'other@example.com', phone: "9999999")
     login_as(me, :scope => :user)
     Capybara.current_session.driver.header 'Referer', root_path
     visit user_path(other)
@@ -57,11 +57,11 @@ feature 'User profile page', :devise do
 
   scenario "worker cannot see a worker's page when logged in" do
     me = FactoryGirl.create(:user, role: 'worker')
-    other = FactoryGirl.create(:user, role: 'worker', email: 'other@example.com')
+    other = FactoryGirl.create(:user, role: 'worker', email: 'other@example.com', phone: "3333333")
     login_as(me, :scope => :user)
     Capybara.current_session.driver.header 'Referer', root_path
     visit user_path(other)
     expect(page).to have_content 'Access denied.'
   end
-  
+
 end

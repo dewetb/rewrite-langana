@@ -4,6 +4,7 @@ FactoryGirl.define do
     role 'worker'
     firstname "Usie"
     lastname "Userson"
+    phone "1234567"
     email "test@example.com"
     password "please123"
 
